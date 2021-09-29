@@ -8,18 +8,18 @@ const app = express();
 const { NotFoundError } = require("./expressError");
 
 const {
-  findMean, 
-  findMedian, 
+  findMean,
+  findMedian,
   findMode
 } = require("./stats");
 
-const {convertStrNums} = require("./utils");
+const { convertStrNums } = require("./utils");
 
 const MISSING = "Expected key `nums` with comma-separated list of numbers.";
 
 
 /** Finds mean of nums in qs: returns {operation: "mean", result } */
-app.get("/mean", function(req, res) {
+app.get("/mean", function (req, res) {
   console.log(req);
   console.log(res);
   let numString = req.query.nums.split(",");
@@ -27,31 +27,31 @@ app.get("/mean", function(req, res) {
   let nums = convertStrNums(numString);
   let result = findMean(nums);
   return res.json({
-    "operation": "mean", 
+    "operation": "mean",
     "result": result
   });
 });
 
 /** Finds median of nums in qs: returns {operation: "median", result } */
 
-app.get("/median", function(req, res) {
+app.get("/median", function (req, res) {
   let numString = req.query.nums.split(",");
   let nums = convertStrNums(numString);
   let result = findMedian(nums);
   return res.json({
-    "operation": "mean", 
+    "operation": "median",
     "result": result
   });
 });
 
 /** Finds mode of nums in qs: returns {operation: "mean", result } */
 
-app.get("/mode", function(req, res) {
+app.get("/mode", function (req, res) {
   let numString = req.query.nums.split(",");
   let nums = convertStrNums(numString);
   let result = findMode(nums);
   return res.json({
-    "operation": "mean", 
+    "operation": "mode",
     "result": result
   });
 })

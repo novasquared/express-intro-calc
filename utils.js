@@ -9,14 +9,15 @@ function convertStrNums(strNums) {
   // be handled in your route
   let nums = [];
 
-  for (let i=0; i < strNums.length; i++) {
-      let num = Number(strNums[i]);
-      if (Number.isNaN(num)) {}
-        throw new BadRequestError(
-          `${num} is not a number.`
+  for (let i = 0; i < strNums.length; i++) {
+    let num = Number(strNums[i]);
+    if (Number.isNaN(num)) {
+      throw new BadRequestError(
+        `${num} is not a number.`
       );
     }
     nums.push(num);
+  }
   return nums;
 }
 
