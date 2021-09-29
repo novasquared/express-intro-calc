@@ -1,3 +1,4 @@
+"use strict";
 /** Build a frequency counter object from an array */
 
 function freqCounts(arr) {
